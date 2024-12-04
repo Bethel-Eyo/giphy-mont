@@ -5,7 +5,7 @@ import { useGiphyContext } from "../../contexts/Giphy/useGiphyContext";
 import { HiEllipsisVertical, HiMiniBars3BottomRight } from "react-icons/hi2";
 
 const Header = () => {
-  const { giphyFetch } = useGiphyContext();
+  const { giphyFetch, favorites } = useGiphyContext();
   const [categories, setCategories] = useState<ICategory[]>([]);
   const [showCategories, setShowCategories] = useState(false);
 
@@ -29,8 +29,9 @@ const Header = () => {
           <h1 className="text-5xl font-bold tracking-tight cursor-pointe">GIPHY-MONT</h1>
         </Link>
 
+        {/* Show first 5 categories on Menu List */}
         <div className="font-bold text-md flex gap-2 items-center">
-          {categories?.slice(0, 5).map((category) => {
+          {categories?.slice(0, 5).map((category: ICategory) => {
             return (
               <Link
                 className="px-4 py-1 transition ease-in-out hover:gradient border-b-4 hidden lg:block"
@@ -51,9 +52,12 @@ const Header = () => {
             />
           </button>
 
-          <div className="h-9 bg-gray-700 pt-1.5 px-6 cursor-pointer rounded">
-            <Link to="/favorites">Favorite GIFs</Link>
-          </div>
+          {/* Show Favourites only when user has favourites */}
+          {favorites.length > 0 && (
+            <div className="h-9 bg-gray-700 pt-1.5 px-6 cursor-pointer rounded">
+              <Link to="/favorites">Favorite GIFs</Link>
+            </div>
+          )}
 
           {/* For Mobile Screens */}
           <button onClick={() => setShowCategories(!showCategories)}>
