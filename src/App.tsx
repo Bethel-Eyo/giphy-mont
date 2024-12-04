@@ -5,6 +5,7 @@ import HomePage from "./pages/Home/HomePage";
 import SearchPage from "./pages/Search/SearchPage";
 import GifDetailPage from "./pages/GifDetail/GifDetailPage";
 import FavoritesPage from "./pages/Favorites/FavoritesPage";
+import { GiphyProvider } from "./contexts/Giphy/GiphyProvider";
 
 const router = createBrowserRouter([
   {
@@ -31,7 +32,11 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <GiphyProvider>
+      <RouterProvider router={router} />;
+    </GiphyProvider>
+  );
 }
 
 export default App;
