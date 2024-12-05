@@ -9,6 +9,8 @@ const useSearchPageLogic = () => {
   const { giphyFetch, filter } = useGiphyContext();
 
   const { query } = useParams();
+  const [page, setPage] = useState(0);
+  const gifsPerPage = 10;
 
   const getSearchResults = useCallback(async () => {
     try {
@@ -17,7 +19,8 @@ const useSearchPageLogic = () => {
           sort: "relevant",
           lang: "en",
           type: filter,
-          limit: 10,
+          limit: gifsPerPage,
+          offset: page * gifsPerPage,
         });
 
         setSearchResults(data);
@@ -25,13 +28,13 @@ const useSearchPageLogic = () => {
     } catch (error) {
       console.debug("[useSearchPageLogic] getSearchResults ", error);
     }
-  }, [filter, giphyFetch, query]);
+  }, [filter, giphyFetch, page, query]);
 
   useEffect(() => {
     getSearchResults();
   }, [filter, getSearchResults]);
 
-  return useMemo(() => ({ searchResults, query }), [searchResults, query]);
+  return useMemo(() => ({ searchResults, query, page, setPage }), [searchResults, query, page, setPage]);
 };
 
 export default useSearchPageLogic;
