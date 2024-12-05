@@ -1,27 +1,11 @@
 import { ICategory } from "@giphy/js-fetch-api";
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useGiphyContext } from "../../contexts/Giphy/useGiphyContext";
 import { HiEllipsisVertical, HiMiniBars3BottomRight } from "react-icons/hi2";
+import { Link } from "react-router-dom";
 import SearchGiphys from "../SearchGiphys/SearchGiphys";
+import useHeaderLogic from "./useHeaderLogic";
 
 const Header = () => {
-  const { giphyFetch, favorites } = useGiphyContext();
-  const [categories, setCategories] = useState<ICategory[]>([]);
-  const [showCategories, setShowCategories] = useState(false);
-
-  const fetchGiphyCategories = async () => {
-    try {
-      const { data } = await giphyFetch.categories();
-      setCategories(data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchGiphyCategories();
-  }, []);
+  const {categories, setShowCategories, showCategories, favorites} = useHeaderLogic();
 
   return (
     <nav>
