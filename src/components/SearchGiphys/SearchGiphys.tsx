@@ -1,27 +1,8 @@
-import { useState } from "react";
 import { HiMiniXMark, HiOutlineMagnifyingGlass } from "react-icons/hi2";
-import { useNavigate } from "react-router-dom";
+import useSearchGiphysLogic from "./useSearchGiphysLogic";
 
 const SearchGiphys = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-  const navigate = useNavigate();
-
-  const searchForGiphy = async () => {
-    // do nothing if the query is empty
-    if (searchQuery.trim() === "") {
-      return;
-    }
-    // navigate to search page
-    navigate(`/search/${searchQuery}`);
-  };
-
-  const quitSearch = () => {
-    setSearchQuery("");
-    /**TODO: can still listen to if it is in the search route, before choosing to
-     * navigate home
-     */
-    navigate("/");
-  }
+  const { searchForGiphy, searchQuery, setSearchQuery, quitSearch } = useSearchGiphysLogic();
 
   return (
     <div className="flex relative">
