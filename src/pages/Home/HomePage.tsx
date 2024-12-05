@@ -1,23 +1,10 @@
-import { useEffect } from "react";
-import { useGiphyContext } from "../../contexts/Giphy/useGiphyContext";
-import GiphyListItem from "../../components/GiphyListItem/GiphyListItem";
 import { IGif } from "@giphy/js-types";
 import FilterParams from "../../components/FilterParams/FilterParams";
+import GiphyListItem from "../../components/GiphyListItem/GiphyListItem";
+import useHomePageLogic from "./useHomePageLogic";
 
 const HomePage = () => {
-  const { giphyFetch, trendingGifs, setTrendingGifs, filter } = useGiphyContext();
-  const fetchTrendingGifs = async () => {
-    try {
-      const { data } = await giphyFetch.trending({ limit: 10, type: filter });
-      setTrendingGifs(data);
-    } catch (error) {
-      console.debug(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchTrendingGifs();
-  }, [filter]);
+  const { trendingGifs } = useHomePageLogic();
 
   return (
     <div>

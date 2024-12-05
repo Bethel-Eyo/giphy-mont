@@ -20,7 +20,7 @@ const router = createBrowserRouter([
         element: <SearchPage />,
       },
       {
-        path: "/:slug",
+        path: "/:type/:slug",
         element: <GifDetailPage />,
       },
       {
