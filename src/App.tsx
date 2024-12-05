@@ -6,6 +6,7 @@ import SearchPage from "./pages/Search/SearchPage";
 import GifDetailPage from "./pages/GifDetail/GifDetailPage";
 import FavoritesPage from "./pages/Favorites/FavoritesPage";
 import { GiphyProvider } from "./contexts/Giphy/GiphyProvider";
+import CategoryPage from "./pages/Category/CategoryPage";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "/:type/:slug",
         element: <GifDetailPage />,
+      },
+      {
+        path: "/:category",
+        element: <CategoryPage />,
       },
       {
         path: "/favorites",
