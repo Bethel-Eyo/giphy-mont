@@ -1,35 +1,9 @@
-import { useParams } from "react-router-dom";
-import { useGiphyContext } from "../../contexts/Giphy/useGiphyContext";
-import { useEffect, useState } from "react";
-import { IGif } from "@giphy/js-types";
 import FilterParams from "../../components/FilterParams/FilterParams";
 import GiphyListItem from "../../components/GiphyListItem/GiphyListItem";
+import useSearchPageLogic from "./useSearchPageLogic";
 
 const SearchPage = () => {
-  const [searchResults, setSearchResults] = useState<IGif[]>([]);
-
-  const { giphyFetch, filter } = useGiphyContext();
-
-  const { query } = useParams();
-
-  const getSearchResults = async () => {
-    try {
-      const { data } = await giphyFetch.search(query!, {
-        sort: "relevant",
-        lang: "en",
-        type: filter,
-        limit: 20,
-      });
-
-      setSearchResults(data);
-    } catch (error) {
-      console.debug("[getSearchResults] ", error);
-    }
-  };
-
-  useEffect(() => {
-    getSearchResults();
-  }, [filter]);
+  const {searchResults, query} = useSearchPageLogic();
 
   return (
     <div className="my-4">
