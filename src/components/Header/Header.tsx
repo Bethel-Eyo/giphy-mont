@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useGiphyContext } from "../../contexts/Giphy/useGiphyContext";
 import { HiEllipsisVertical, HiMiniBars3BottomRight } from "react-icons/hi2";
+import SearchGiphys from "../SearchGiphys/SearchGiphys";
 
 const Header = () => {
   const { giphyFetch, favorites } = useGiphyContext();
@@ -88,6 +89,7 @@ const Header = () => {
           </div>
         )}
       </div>
+      <SearchGiphys />
     </nav>
   );
 };
