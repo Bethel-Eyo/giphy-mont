@@ -5,6 +5,7 @@ import { IGif } from "@giphy/js-types";
 
 const useSearchPageLogic = () => {
   const [searchResults, setSearchResults] = useState<IGif[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { giphyFetch, filter } = useGiphyContext();
 
@@ -15,6 +16,7 @@ const useSearchPageLogic = () => {
   const getSearchResults = useCallback(async () => {
     try {
       if (query) {
+        setIsLoading(true);
         const { data } = await giphyFetch.search(query, {
           sort: "relevant",
           lang: "en",
@@ -27,6 +29,8 @@ const useSearchPageLogic = () => {
       }
     } catch (error) {
       console.debug("[useSearchPageLogic] getSearchResults ", error);
+    } finally {
+      setIsLoading(false);
     }
   }, [filter, giphyFetch, page, query]);
 
@@ -34,7 +38,10 @@ const useSearchPageLogic = () => {
     getSearchResults();
   }, [filter, getSearchResults]);
 
-  return useMemo(() => ({ searchResults, query, page, setPage }), [searchResults, query, page, setPage]);
+  return useMemo(
+    () => ({ searchResults, query, page, setPage, isLoading }),
+    [searchResults, query, page, setPage, isLoading]
+  );
 };
 
 export default useSearchPageLogic;

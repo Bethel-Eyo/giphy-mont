@@ -14,7 +14,7 @@ const HomePage = () => {
       <Pagination page={page} setPage={setPage} />
       <div className="mt-3 columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-2">
         {isLoading
-          ? Array(10) // Same number as GIFs per page
+          ? Array(10) // Same number as Giphys per page
               .fill(0)
               .map((_, index) => (
                 <div key={index} className="h-32 w-full">
