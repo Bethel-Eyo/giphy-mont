@@ -3,7 +3,6 @@ import { HiMiniChevronDown, HiMiniChevronUp, HiMiniHeart } from "react-icons/hi2
 import GiphyListItem from "../../components/GiphyListItem/GiphyListItem";
 import useGifDetailPageLogic from "./useGifDetailPageLogic";
 
-
 const GifDetailPage = () => {
   const { giphy, readMore, setReadMore, saveToFavorites, favorites } = useGifDetailPageLogic();
 
@@ -75,7 +74,9 @@ const GifDetailPage = () => {
               >
                 <HiMiniHeart
                   size={30}
-                  className={`${favorites.includes(giphy?.id) ? "text-red-500" : ""}`}
+                  className={`transition-transform duration-300 ease-in-out ${
+                    favorites.includes(giphy?.id) ? "text-red-500 scale-150" : "scale-100"
+                  }`}
                 />
                 Favorite
               </button>

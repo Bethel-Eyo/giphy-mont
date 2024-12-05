@@ -7,7 +7,6 @@ const useFavoritesPageLogic = () => {
   const [savedGiphys, setSavedGiphys] = useState<IGif[]>([]);
 
   const getSavedGiphys = useCallback(async () => {
-    // TODO: Fix potential favorites as string[] issue
     try {
       const { data: gifs } = await giphyFetch.gifs(favorites as string[]);
       setSavedGiphys(gifs);
