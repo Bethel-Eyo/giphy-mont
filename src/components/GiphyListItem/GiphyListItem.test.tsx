@@ -21,7 +21,7 @@ const mockTrendingGif: IGif = {
   } as IUser,
 } as IGif;
 
-describe('GiphyListItem Component', () => {
+describe('GiphyListItem Component tests', () => {
   test('renders the image and title', () => {
     render(
       <MemoryRouter>

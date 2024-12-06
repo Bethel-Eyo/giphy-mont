@@ -19,6 +19,7 @@ const SearchGiphys = () => {
         <button
           onClick={quitSearch}
           className="absolute bg-gray-300 opacity-90 rounded-full right-20 mr-2 top-6"
+          aria-label="close"
         >
           <HiMiniXMark size={22} />
         </button>
@@ -26,6 +27,7 @@ const SearchGiphys = () => {
       <button
         onClick={searchForGiphy}
         className="bg-gradient-to-tr from-pink-600 to-pink-400 text-white px-4 py-2 rounded-tr rounded-br"
+        aria-label="magnifying glass"
       >
         <HiOutlineMagnifyingGlass size={35} />
       </button>

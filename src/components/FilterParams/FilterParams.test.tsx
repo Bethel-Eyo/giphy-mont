@@ -8,7 +8,7 @@ vi.mock('../../contexts/Giphy/useGiphyContext', () => ({
   useGiphyContext: vi.fn(),
 }));
 
-describe('FilterParams Component', () => {
+describe('FilterParams Component tests', () => {
   const setFilterMock = vi.fn();
   
   beforeEach(() => {

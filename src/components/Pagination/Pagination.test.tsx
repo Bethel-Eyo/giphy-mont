@@ -12,7 +12,7 @@ vi.mock('./usePaginationLogic', () => ({
   })),
 }));
 
-describe('Pagination Component', () => {
+describe('Pagination Component tests', () => {
   const setPageMock = vi.fn(); // Mock setPage function
 
   afterEach(() => {
