@@ -44,7 +44,7 @@ const GifDetailPage = () => {
             <span className="faded-text">Source</span>
             <div className="flex items-center text-sm font-bold gap-1">
               <HiOutlineExternalLink size={25} />
-              <a href={giphy.source} target="_blank" className="truncate">
+              <a href={giphy.source} target="_blank" rel="noreferrer" className="truncate">
                 {giphy.source}
               </a>
             </div>
