@@ -15,7 +15,7 @@ const SearchPage = () => {
         Array(10)
           .fill(0)
           .map((_, index) => (
-            <div key={index} className="h-32 w-full">
+            <div key={index} className="h-32 w-full" data-testid="loading-skeleton">
               <Skeleton height="100%" baseColor="#e0e0e0" highlightColor="#f5f5f5" />
             </div>
           ))
