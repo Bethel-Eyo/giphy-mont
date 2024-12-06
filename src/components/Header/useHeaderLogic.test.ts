@@ -4,7 +4,6 @@ import { useGiphyContext } from "../../contexts/Giphy/useGiphyContext";
 import { describe, test, expect, vi, beforeEach, afterEach } from "vitest";
 import { act, renderHook, waitFor } from "@testing-library/react";
 
-// Mock the useGiphyContext hook
 vi.mock("../../contexts/Giphy/useGiphyContext", () => ({
   useGiphyContext: vi.fn(),
 }));

@@ -5,7 +5,6 @@ import useSearchPageLogic from "./useSearchPageLogic";
 import { useParams } from "react-router-dom";
 import { useGiphyContext } from "../../contexts/Giphy/useGiphyContext";
 
-// Mock `useGiphyContext` and `useParams`
 vi.mock("../../contexts/Giphy/useGiphyContext", () => ({
   useGiphyContext: vi.fn(),
 }));

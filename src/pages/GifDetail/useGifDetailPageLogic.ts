@@ -33,8 +33,8 @@ const useGifDetailPageLogic = () => {
   }, [getSingleGiphy, type]);
 
   return useMemo(
-    () => ({ giphy, readMore, setReadMore, saveToFavorites, favorites }),
-    [giphy, readMore, setReadMore, saveToFavorites, favorites]
+    () => ({ giphy, readMore, setReadMore, saveToFavorites, favorites, getSingleGiphy }),
+    [giphy, readMore, setReadMore, saveToFavorites, favorites, getSingleGiphy]
   );
 };
 
