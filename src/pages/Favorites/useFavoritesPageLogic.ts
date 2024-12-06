@@ -8,14 +8,16 @@ const useFavoritesPageLogic = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const getSavedGiphys = useCallback(async () => {
-    try {
-      setIsLoading(true);
-      const { data: gifs } = await giphyFetch.gifs(favorites as string[]);
-      setSavedGiphys(gifs);
-    } catch (error) {
-      console.debug("[useFavoritesPageLogic] getSavedGiphys ", error);
-    } finally {
-      setIsLoading(false);
+    if (favorites.length > 0) {
+      try {
+        setIsLoading(true);
+        const { data: gifs } = await giphyFetch.gifs(favorites as string[]);
+        setSavedGiphys(gifs);
+      } catch (error) {
+        console.debug("[useFavoritesPageLogic] getSavedGiphys ", error);
+      } finally {
+        setIsLoading(false);
+      }
     }
   }, [favorites, giphyFetch]);
 
