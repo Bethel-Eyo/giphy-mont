@@ -9,7 +9,7 @@ vi.mock("../../contexts/Giphy/useGiphyContext", () => ({
   useGiphyContext: vi.fn(),
 }));
 
-describe("useHeaderLogic", () => {
+describe("useHeaderLogic tests", () => {
   const mockGiphyFetch = {
     categories: vi.fn(),
   };
