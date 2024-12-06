@@ -16,9 +16,6 @@ const useSearchGiphysLogic = () => {
 
   const quitSearch = useCallback(() => {
     setSearchQuery("");
-    /**TODO: can still listen to if it is in the search route, before choosing to
-     * navigate home
-     */
     navigate("/");
   }, [navigate]);
 

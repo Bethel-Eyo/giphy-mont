@@ -51,7 +51,6 @@ const Header = () => {
         </div>
 
         {/* Dropdown Menu */}
-        {/* TODO: Refactor for Abstraction */}
         {showCategories && (
           <div className="absolute right-0 top-14 px-10 pt-6 pb-9 w-full gradient z-20">
             <span className="text-3xl font-extrabold">Categories</span>
