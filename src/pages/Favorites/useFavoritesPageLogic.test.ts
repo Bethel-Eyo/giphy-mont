@@ -42,7 +42,6 @@ describe('useFavoritesPageLogic', () => {
   });
 
   test('sets loading state correctly during fetch', async () => {
-    // Mock the useGiphyContext hook with a delayed API call
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     (useGiphyContext as vi.Mock).mockReturnValue({
