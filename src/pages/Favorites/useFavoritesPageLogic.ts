@@ -5,13 +5,17 @@ import { useGiphyContext } from "../../contexts/Giphy/useGiphyContext";
 const useFavoritesPageLogic = () => {
   const { giphyFetch, favorites } = useGiphyContext();
   const [savedGiphys, setSavedGiphys] = useState<IGif[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const getSavedGiphys = useCallback(async () => {
     try {
+      setIsLoading(true);
       const { data: gifs } = await giphyFetch.gifs(favorites as string[]);
       setSavedGiphys(gifs);
     } catch (error) {
-        console.debug('[useFavoritesPageLogic] getSavedGiphys ', error)
+      console.debug("[useFavoritesPageLogic] getSavedGiphys ", error);
+    } finally {
+      setIsLoading(false);
     }
   }, [favorites, giphyFetch]);
 
@@ -19,7 +23,7 @@ const useFavoritesPageLogic = () => {
     getSavedGiphys();
   }, [getSavedGiphys]);
 
-  return useMemo(() => ({ savedGiphys }), [savedGiphys]);
+  return useMemo(() => ({ savedGiphys, isLoading }), [savedGiphys, isLoading]);
 };
 
 export default useFavoritesPageLogic;
