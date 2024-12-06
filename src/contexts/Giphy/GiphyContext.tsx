@@ -2,7 +2,7 @@ import { GiphyFetch, MediaType } from "@giphy/js-fetch-api";
 import { GifID, IGif } from "@giphy/js-types";
 import { createContext } from "react";
 
-interface GiphyContextType {
+export interface GiphyContextType {
     giphyFetch: GiphyFetch;
     trendingGifs: IGif[];
     setTrendingGifs: React.Dispatch<React.SetStateAction<IGif[]>>;
