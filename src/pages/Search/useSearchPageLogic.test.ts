@@ -1,6 +1,6 @@
 import { renderHook, act } from "@testing-library/react";
 import { waitFor } from "@testing-library/react";
-import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
+import { afterEach, beforeEach, describe, expect, test, vi } from "vitest";
 import useSearchPageLogic from "./useSearchPageLogic";
 import { useParams } from "react-router-dom";
 import { useGiphyContext } from "../../contexts/Giphy/useGiphyContext";
@@ -13,7 +13,7 @@ vi.mock("react-router-dom", () => ({
   useParams: vi.fn(),
 }));
 
-describe("useSearchPageLogic", () => {
+describe("useSearchPageLogic tests", () => {
   const mockGiphyFetch = {
     search: vi.fn(),
   };
@@ -34,7 +34,7 @@ describe("useSearchPageLogic", () => {
     vi.clearAllMocks();
   });
 
-  it("should initialize with default values", () => {
+  test("should initialize with default values", () => {
     const { result } = renderHook(() => useSearchPageLogic());
 
     expect(result.current.searchResults).toEqual([]);
@@ -42,7 +42,7 @@ describe("useSearchPageLogic", () => {
     expect(result.current.query).toBe("funny");
   });
 
-  it("should fetch search results and update state", async () => {
+  test("should fetch search results and update state", async () => {
     const mockData = { data: [{ id: "1", title: "Test Gif" }] };
     mockGiphyFetch.search.mockResolvedValueOnce(mockData);
 
@@ -61,7 +61,7 @@ describe("useSearchPageLogic", () => {
     expect(result.current.isLoading).toBe(false);
   });
 
-  it("should handle errors gracefully", async () => {
+  test("should handle errors gracefully", async () => {
     mockGiphyFetch.search.mockRejectedValueOnce(new Error("Fetch failed"));
 
     const { result } = renderHook(() => useSearchPageLogic());
@@ -73,7 +73,7 @@ describe("useSearchPageLogic", () => {
     expect(mockGiphyFetch.search).toHaveBeenCalledTimes(1);
   });
 
-  it("should update the page and trigger a new search", async () => {
+  test("should update the page and trigger a new search", async () => {
     const mockData = { data: [{ id: "1", title: "New Gif" }] };
     mockGiphyFetch.search.mockResolvedValue(mockData);
 

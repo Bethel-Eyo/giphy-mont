@@ -15,7 +15,7 @@ vi.mock("./useSearchPageLogic", async () => {
   };
 });
 
-describe("SearchPage", () => {
+describe("SearchPage tests", () => {
   beforeEach(() => {
     // Mock the return value for the `useSearchPageLogic` hook
     vi.spyOn(useSearchPageLogic, "default").mockReturnValue({
