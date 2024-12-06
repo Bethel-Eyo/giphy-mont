@@ -15,6 +15,7 @@ const GiphyListItem: FC<GiphyItemProps> = ({ trendingGif, hover = true }) => {
           src={trendingGif?.images?.fixed_width.webp}
           alt={trendingGif?.title}
           className="w-full object-cover rounded transition-all duration-300"
+          data-testid="gif-image"
         />
         {hover && (
           <div className="absolute inset-0 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-b from-transparent via-transparent to-black font-bold flex items-end gap-2 p-2">

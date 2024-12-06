@@ -12,7 +12,7 @@ const GifDetailPage = () => {
         {giphy?.user && (
           <>
             <div className="flex gap-1">
-              <img src={giphy?.user?.avatar_url} alt={giphy?.user?.display_name} className="h-14" />
+              <img data-testid="user-avatar" src={giphy?.user?.avatar_url} alt={giphy?.user?.display_name} className="h-14" />
               <div className="px-2">
                 <div className="font-bold">{giphy?.user?.display_name}</div>
                 <div className="faded-text">@{giphy?.user?.username}</div>
@@ -74,6 +74,7 @@ const GifDetailPage = () => {
               >
                 <HiMiniHeart
                   size={30}
+                  data-testid="favorite-icon"
                   className={`transition-transform duration-300 ease-in-out ${
                     favorites.includes(giphy?.id) ? "text-red-500 scale-150" : "scale-100"
                   }`}
