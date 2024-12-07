@@ -23,6 +23,7 @@ A react project for viewing and searching for trending GIFs using the Giphy API.
 - ✅ Users can click on a GIF to view a single Gif's details and add it to favorites from there.
 - ✅ Users can save and unsave GIfs to their Favorites list and this data persists even after refreshing or closing the app tab.
 - ✅ There is an Animation on the like button when user likes the GIF to add it to their favorite list.
+- ✅ Unit tests to cover all the files.
 
 #### Running in dev mode
 
