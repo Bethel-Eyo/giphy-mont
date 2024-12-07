@@ -1,5 +1,5 @@
 import { renderHook, act } from "@testing-library/react";
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, test, expect, vi, beforeEach } from "vitest";
 import useGiphyProviderLogic from "./useGiphyProviderLogic";
 import { IGif } from "@giphy/js-types";
 
@@ -9,7 +9,7 @@ describe("useGiphyProviderLogic", () => {
     vi.restoreAllMocks();
   });
 
-  it("initializes favorites from localStorage", () => {
+  test("initializes favorites from localStorage", () => {
     localStorage.setItem("favoriteGiphys", JSON.stringify(["gif1", "gif2"]));
 
     const { result } = renderHook(() => useGiphyProviderLogic());
@@ -17,7 +17,7 @@ describe("useGiphyProviderLogic", () => {
     expect(result.current.favorites).toEqual(["gif1", "gif2"]);
   });
 
-  it("handles empty or invalid localStorage gracefully", () => {
+  test("handles empty or invalid localStorage gracefully", () => {
     localStorage.setItem("favoriteGiphys", "invalid-json");
 
     const { result } = renderHook(() => useGiphyProviderLogic());
@@ -25,7 +25,7 @@ describe("useGiphyProviderLogic", () => {
     expect(result.current.favorites).toEqual([]);
   });
 
-  it("adds a gif ID to favorites", () => {
+  test("adds a gif ID to favorites", () => {
     const { result } = renderHook(() => useGiphyProviderLogic());
 
     act(() => {
@@ -36,7 +36,7 @@ describe("useGiphyProviderLogic", () => {
     expect(localStorage.getItem("favoriteGiphys")).toBe(JSON.stringify(["gif1"]));
   });
 
-  it("removes a gif ID from favorites", () => {
+  test("removes a gif ID from favorites", () => {
     localStorage.setItem("favoriteGiphys", JSON.stringify(["gif1", "gif2"]));
 
     const { result } = renderHook(() => useGiphyProviderLogic());
@@ -49,7 +49,7 @@ describe("useGiphyProviderLogic", () => {
     expect(localStorage.getItem("favoriteGiphys")).toBe(JSON.stringify(["gif2"]));
   });
 
-  it("sets trendingGifs state", () => {
+  test("sets trendingGifs state", () => {
     const { result } = renderHook(() => useGiphyProviderLogic());
 
     const newGifs = [{ id: "gif1" }, { id: "gif2" }] as IGif[];
@@ -61,7 +61,7 @@ describe("useGiphyProviderLogic", () => {
     expect(result.current.trendingGifs).toEqual(newGifs);
   });
 
-  it("sets filter state", () => {
+  test("sets filter state", () => {
     const { result } = renderHook(() => useGiphyProviderLogic());
 
     act(() => {
@@ -71,7 +71,7 @@ describe("useGiphyProviderLogic", () => {
     expect(result.current.filter).toBe("stickers");
   });
 
-  it("saves and retrieves complex state updates correctly", () => {
+  test("saves and retrieves complex state updates correctly", () => {
     const { result } = renderHook(() => useGiphyProviderLogic());
 
     act(() => {
