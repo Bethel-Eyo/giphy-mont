@@ -1,50 +1,44 @@
-# React + TypeScript + Vite
+# GIPHY-MONT
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Description
 
-Currently, two official plugins are available:
+A react project for viewing and searching for trending GIFs using the Giphy API.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### Technologies used
 
-## Expanding the ESLint configuration
+1. React created with Vite
+2. Typescript
+3. Tailwind CSS for styling
+4. Vitest for unit tesing
+5. Eslint for linting
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Functional requirements implemented
 
-- Configure the top-level `parserOptions` property like this:
+- ✅ Users can see the trending GIFs from [Giphy's Trending Endpoint](https://developers.giphy.com/docs/api/endpoint#trending) the when they first loads the app.
+- ✅ Users can search for GIFs that are pulled from [Giphy's Search Endpoint](https://developers.giphy.com/docs/api/endpoint#search)
+- ✅ GIFs categories are fetched and displayed in the header and users can filter GIFs by the category
+- ✅ Users can also filter by MediaTypes which are GIFs, Stickers, and Texts.
+- ✅ Pagination functionality was implemented to help the users see more by clicking the next and previous button to see the next and previous page respectively.
+- ✅ Skeletons are shown when the app is trying to fetch the GIFs data for more interactiveness.
+- ✅ Users can click on a GIF to view a single Gif's details and add it to favorites from there.
+- ✅ Users can save and unsave GIfs to their Favorites list and this data persists even after refreshing or closing the app tab.
+- ✅ There is an Animation on the like button when user likes the GIF to add it to their favorite list.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+#### Running in dev mode
+
+```
+npm run dev
 ```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+#### Running unit test
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
 ```
+npm run test
+```
+
+### Other things that can be done to make this more production ready.
+
+1. Integration of tools to help capture exceptions using tools like sentry.
+2. Implement UI-automation tests using cypress that would run on the CI/CD pipelines. e.t.c
+3. pre-commit hooks to run linting and prettier formatting before being able to commit the code.
+4. Implement jobs to ensure 100% test coverage on new code on the CI/CD pipelines before they pass. (this should be required alongside two approvals from other team members after review before the developer is able to merge a feature to the main branch).
